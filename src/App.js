@@ -5,17 +5,34 @@ class App extends Component{
   constructor(props){
     super(props)
 
-    this.onClickBtn = this.onClickBtn.bind(this)
+    this.state = {
+      name:''
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.onSubmitTask = this.onSubmitTask.bind(this)
   }
 
-  onClickBtn(e){
+  handleChange = (e) =>{
     e.preventDefault()
-    console.log('trigger')
+
+    this.setState({
+      name: e.target.value,
+    })
+
+    console.log('test')
+  }
+
+
+  onSubmitTask = (e) => {
+    e.preventDefault();
+    console.log(e)
   }
 
   render(){
+    const {name} = this.state;
+
     return (
-    <Header onClickButton={this.onClickBtn}/>
+    <Header value = {name}/>
     )
   }
 }
