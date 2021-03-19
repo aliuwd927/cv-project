@@ -1,19 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-class Header extends Component{
+const Header = (props) =>{
+  const { names } = props;
 
-    render(){
-
-        return(
-            <div>
-            <form onSubmit={this.onSubmitTask}>
-              <input type="text"
-              onChange={this.handleChange} />
-              <button type="submit">Submit</button>
-            </form>
-          </div>
-        )
-    }
+  return (
+    <ul>
+      {names.map((name) => {
+        return <li>{name}</li>
+      })}
+    </ul>
+  )
 }
 
 export default Header

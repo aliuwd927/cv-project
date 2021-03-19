@@ -1,40 +1,52 @@
 import React, { Component } from 'react'
-import Header from './component/header'
+import Header from './component/header';
+
 
 class App extends Component{
-  constructor(props){
-    super(props)
-
+  constructor(){
+    super()
+    
     this.state = {
-      name:''
+      name: '',
+      names:[]
     }
-    this.handleChange = this.handleChange.bind(this)
-    this.onSubmitTask = this.onSubmitTask.bind(this)
   }
 
-  handleChange = (e) =>{
-    e.preventDefault()
-
+  handleChange = (e)=>{
     this.setState({
       name: e.target.value,
     })
-
-    console.log('test')
   }
 
-
-  onSubmitTask = (e) => {
+  onSubmitName = (e) =>{
     e.preventDefault();
-    console.log(e)
+    this.setState({
+      name:'',
+      names: this.state.tasks.concat(this.state.task)
+    })
   }
+    render(){
 
-  render(){
-    const {name} = this.state;
+      const {name, names} = this.state;
 
-    return (
-    <Header value = {name}/>
-    )
+      return (
+        <div>
+        <form onSubmit={this.onSubmitTask}>
+          <input 
+          type="text"
+          onChange ={this.handleChange} 
+          value={name}
+          />
+
+          <button
+          type='submit'
+          >Add</button>
+        </form>
+          <Header names={names}/>
+      </div>
+      )
+
+    }
   }
-}
 
 export default App
