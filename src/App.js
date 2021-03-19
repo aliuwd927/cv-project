@@ -22,7 +22,7 @@ class App extends Component{
     e.preventDefault();
     this.setState({
       name:'',
-      names: this.state.tasks.concat(this.state.task)
+      names: this.state.names.concat(this.state.name)
     })
   }
     render(){
@@ -31,7 +31,7 @@ class App extends Component{
 
       return (
         <div>
-        <form onSubmit={this.onSubmitTask}>
+        <form onSubmit={this.onSubmitName}>
           <input 
           type="text"
           onChange ={this.handleChange} 
