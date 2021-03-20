@@ -6,7 +6,7 @@ const Header = (props) =>{
   return (
     <ul>
       {names.map((name) => {
-        alert(name)
+        return <li>{name}</li>
       })}
     </ul>
   )
