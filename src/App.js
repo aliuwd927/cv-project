@@ -10,24 +10,30 @@ class App extends Component{
       name: '',
       names:[]
     }
+
+    this.handleChange = this.handleChange.bind(this)
+    this.onSubmitName = this.onSubmitName.bind(this)
+
   }
 
   handleChange = (e)=>{
     this.setState({
-      name: e.target.value,
+      nameF: e.target.value,
+      nameL: e.target.value,
     })
   }
 
   onSubmitName = (e) =>{
     e.preventDefault();
     this.setState({
-      name:'',
-      names: this.state.names.concat(this.state.name)
+      nameF:'',
+      nameL: '',
+      names: this.state.names.concat(this.state.nameF + this.state.nameL)
     })
   }
     render(){
 
-      const {name, names} = this.state;
+      const {nameF,nameL, names} = this.state;
 
       return (
         <div>
@@ -35,8 +41,14 @@ class App extends Component{
           <input 
           type="text"
           onChange ={this.handleChange} 
-          value={name}
+          value={nameF}
           />
+
+          <input 
+          type="text"
+          onChange ={this.handleChange} 
+          value={nameL}
+          />  
 
           <button
           type='submit'
